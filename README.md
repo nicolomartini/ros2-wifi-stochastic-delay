@@ -1,11 +1,11 @@
-# Experimental Derivation of a Stochastic Wi-Fi Model for ROS2 NCS
+# Experimental Derivation of a Stochastic Wi-Fi Network Model for ROS2 NCS
 
-**Bachelor's Thesis Project**
-**Title:** *Impact of Wireless Networks on Robot Control* (Impatto delle reti wireless sul controllo di robot)
-**Author:** Nicolò Martini
-**Supervisor:** Prof. Pietro Falco
-**University:** Università degli Studi di Padova
-**Year:** 2025
+### Bachelor's Thesis Project
+* **Title:** Impact of Wireless Networks on Robot Control
+* **Author:** Nicolò Martini
+* **Supervisor:** Prof. Pietro Falco
+* **University:** Università degli Studi di Padova
+* **Year:** 2025
 
 ---
 
@@ -32,16 +32,16 @@ ros2-wifi-stochastic-delay/
 │
 ├── delay_anl/             # Python analysis tools
 │   ├── data/              # Experimental CSV Datasets
-│   │   ├── one-to-one/    # Baseline OWD tests
 │   │   ├── ping-pong/     # RTT validation tests
+│   │   ├── one-to-one/    # Baseline OWD tests
 │   │   ├── one-to-many/   # Scalability tests (1to2 ... 1to10)
 │   │   ├── payload/       # Load tests (50-joints, 40x35 ... 320x280)
 │   │   └── disturbance/   # Congestion tests
 │   └── data_analysis.py   # Main analysis script
 │
-└── delay_sim/             # MATLAB/Simulink Application
-    ├── model.slx          # NCS Simulink model
+└── delay_sim/             # MATLAB Simulink Application
     ├── load_parameters.m  # Parameter initialization script
+    ├── model.slx          # Simulink model
     ├── plot_results.m     # Tracking error and 3D trajectory plotting script
     ├── animate_robot.m    # Animation generation script
     └── results.mat        # Pre-computed simulation results
@@ -69,6 +69,7 @@ Navigate to the workspace and build the package:
 cd ros2_ws
 colcon build delay_est
 source install/setup.bash
+
 # Run the delay estimation nodes (example)
 ros2 run delay_est sender
 ros2 run delay_est receiver
@@ -105,7 +106,7 @@ python3 data_analysis.py
 
 ## 📊 Key Results
 
-* **Distribution & Payload Dependency:** For typical control traffic (small payloads < 1 KB), the OWD follows a **Log-normal distribution**, characterized by heavy tails. As the payload size increases, the distribution shape evolves, transitioning towards a **central distribution** (serialization-dominated).
+* **Distribution & Payload Dependency:** For typical control traffic (small payloads), the OWD follows a **Log-normal distribution**, characterized by heavy tails. As the payload size increases, the distribution shape evolves, transitioning towards a **central distribution**.
 * **Asymmetry:** The channel is statistically asymmetric ($OWD_{AB} \neq OWD_{BA}$).
 * **Impact:** Introducing the stochastic delay model in the control loop causes a violation of the phase margin, leading to **instability** in the standard PD controller.
 
