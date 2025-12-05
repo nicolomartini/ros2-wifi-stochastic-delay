@@ -62,7 +62,7 @@ The experimental data was collected using the following setup:
 Navigate to the workspace and build the package:
 ```bash
 cd ros2_ws
-colcon build delay_est
+colcon build --packages-select delay_est
 source install/setup.bash
 
 # Run the delay estimation nodes (example)
