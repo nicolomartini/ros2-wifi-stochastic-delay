@@ -54,7 +54,7 @@ ax.FontSize = 24;
 % Global Title
 sgtitle('Comparison of Tracking Errors', 'FontSize', 32);
 
-%% 3D Space Trajectory Plots
+%% Trajectory Plots
 snapshotTime = 1.5;
 t = nominal.time;
 [~, idx] = min(abs(t - snapshotTime));
