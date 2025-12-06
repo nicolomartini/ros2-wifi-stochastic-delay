@@ -32,8 +32,9 @@ ros2-wifi-stochastic-delay/
 │
 ├── delay_anl/             # Python analysis tools
 │   ├── data.zip           # Compressed Experimental Datasets (Unzip required!)
-│   └── data_analysis.py   # Analysis script
-│
+│   ├── data_analysis.py   # Analysis script
+│   └── environment.yml    # Conda environment file for reproducibility
+│    
 └── delay_sim/             # MATLAB Simulink Application
     ├── load_parameters.m  # Parameter initialization script
     ├── model.slx          # Simulink model
@@ -72,7 +73,9 @@ ros2 run delay_est receiver
 *Note: Ensure NTP synchronization is active between nodes before running measurements.*
 
 ### 2. Statistical Analysis (Python)
-The `delay_anl` folder contains the experimental datasets compressed in **`data.zip`** (to comply with GitHub file size limits). The Python environment is managed via **Anaconda**.
+The `delay_anl` folder contains the experimental datasets compressed in **`data.zip`** and the analysis scripts. The Python environment is managed via **Anaconda**.
+
+To replicate the exact analysis environment, a frozen `environment.yml` file is provided.
 
 ```bash
 cd delay_anl
@@ -80,12 +83,11 @@ cd delay_anl
 # Unzip the datasets
 unzip data.zip
 
-# Create and activate environment (Recommended)
-conda create -n ros2-wifi-analysis python=3.9
-conda activate ros2-wifi-analysis
+# Create the environment from the file
+conda env create -f environment.yml
 
-# Install dependencies
-conda install numpy scipy matplotlib pandas seaborn
+# Activate the environment
+conda activate delay-analysis
 
 # Run the analysis
 python3 data_analysis.py
