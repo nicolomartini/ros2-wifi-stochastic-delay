@@ -3,16 +3,19 @@
 <package format="3">
   <name>delay_est</name>
   <version>1.0.0</version>
-  <description>A simple OWD and RTT estimator</description>
-  <maintainer email="nicolo.martini.5@studenti.unipd.it">nicolo</maintainer>
-  <license>License declaration</license>
+  <description>
+    Experimental OWD and RTT estimator for ROS2-based Networked Control Systems (NCS) on Wi-Fi 6.
+    Developed for Bachelor Thesis at University of Padova.
+  </description>
+  <maintainer email="nicolo.martini.5@studenti.unipd.it">Nicolò Martini</maintainer>
+  <author email="nicolo.martini.5@studenti.unipd.it">Nicolò Martini</author>
+  <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>rclcpp</depend>
-
   <depend>sensor_msgs</depend>
-
+  
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
