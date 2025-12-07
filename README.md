@@ -94,15 +94,15 @@ python3 data_analysis.py
 ```
 
 ### 3. Simulation (MATLAB)
-**Requirements:** MATLAB **R2025b** with the following toolboxes installed:
-* **Robotics System Toolbox** (Required for `RigidBodyTree` dynamics and kinematics)
-* **Control System Toolbox** (Required for controller implementation and analysis)
+**Requirements:** MATLAB R2025b with the following toolboxes installed:
+* Robotics System Toolbox (Required for `RigidBodyTree` dynamics and kinematics)
+* Control System Toolbox (Required for controller implementation and analysis)
 
 **Steps:**
 1.  Open MATLAB and navigate to the `delay_sim` folder.
 2.  Run `load_parameters.m` to initialize all the model parameters.
 3.  Open and run `model.slx` to perform the simulation.
-4.  **Visualization:**
+4.  Visualization:
     * Run `plot_results.m` to view tracking error divergence and trajectory comparison.
     * Run `animate_robot.m` to generate the video/frames of the simulation.
     * *(Note: You can use `results.mat` to plot data without re-running the simulation).*
