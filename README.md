@@ -103,17 +103,17 @@ python3 data_analysis.py
 2.  Run `load_parameters.m` to initialize all the model parameters.
 3.  Open and run `model.slx` to perform the simulation.
 4.  Visualization:
-    * Run `plot_results.m` to view tracking error divergence and trajectory comparison.
-    * Run `animate_robot.m` to generate the video/frames of the simulation.
-    * *(Note: You can use `results.mat` to plot data without re-running the simulation).*
+    * run `plot_results.m` to view tracking error divergence and trajectory comparison.
+    * run `animate_robot.m` to generate the video/frames of the simulation.
+    * *(Note: you can use `results.mat` to plot data without re-running the simulation).*
 
 ---
 
 ## 📊 Key Results
 
-* **Distribution & Payload Dependency:** For typical control traffic (small payloads), the OWD follows a Lognormal distribution, characterized by heavy tails. As the payload size increases, the distribution shape evolves, transitioning towards a central distribution.
-* **Asymmetry:** The channel is statistically asymmetric ($OWD_{AB} \neq OWD_{BA}$).
-* **Impact:** Introducing the stochastic delay model in the control loop causes a violation of the phase margin, leading to instability in the standard PD controller.
+* **Distribution & Payload Dependency:** for typical control traffic (small payloads), the OWD follows a Lognormal distribution, characterized by heavy tails. As the payload size increases, the distribution shape evolves, transitioning towards a central distribution.
+* **Asymmetry:** the channel is statistically asymmetric ($OWD_{AB} \neq OWD_{BA}$).
+* **Impact:** introducing the stochastic delay model in the control loop causes a violation of the phase margin, leading to instability in the standard PD controller.
 
 ---
 
