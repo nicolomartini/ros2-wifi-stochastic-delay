@@ -15,6 +15,7 @@ PAYLOAD_PATH = 'data/payload/'
 DISTURBANCE_PATH = 'data/disturbance/'
 
 DATA_PATHS = [PINGPONG_PATH, ONETOONE_PATH, ONETOMANY_PATH, PAYLOAD_PATH, DISTURBANCE_PATH]
+SCENARIOS = ['Reference Scenario', 'Scalability Test', 'Payload Test', 'Disturbance Test']
 
 # sizes for labels (in KB)
 SIZES = [0.25, 1, 4, 16, 64]
@@ -108,11 +109,12 @@ def pingpong_analysis(data):
     axs[1].grid(True)
     
     # global adjustments
+    plt.suptitle('Preliminary Test: Timeseries', fontsize = 32)
     plt.tight_layout()
     
     return time_series
 
-def histograms_plot(data, data_path):
+def histograms_plot(data, data_path, scenario):
     # figure initialization
     histogram, axs = plt.subplots(2, 1, figsize = (16, 9))
 
@@ -195,7 +197,7 @@ def histograms_plot(data, data_path):
     axs[1].grid(True)
 
     # final adjustments and return instruction
-    # plt.suptitle('Latency Samples Histograms', fontsize = 32)
+    plt.suptitle(scenario + ': Latency Samples Histograms', fontsize = 32)
     plt.tight_layout()
     
     return histogram
@@ -267,7 +269,7 @@ def pdf_analysis(data):
     axs[1].grid(True)
 
     # global adjustments
-    # plt.suptitle('Selected PDFs Fitting', fontsize = 32)
+    plt.suptitle('Selected PDFs Fitting', fontsize = 32)
     plt.tight_layout()
     
     # Lognormals overlay
@@ -282,7 +284,7 @@ def pdf_analysis(data):
     plt.tick_params(axis='both', labelsize=24)
     plt.grid(True)
     
-    # plt.suptitle('Overlay of the Latency Distributions in the two Directions', fontsize = 32)
+    plt.suptitle('Overlay of the Latency Distributions in the two Directions', fontsize = 32)
     plt.tight_layout()
     
     return fitting, overlay
@@ -308,7 +310,7 @@ def payload_analysis(data):
             mean_ba.append(mean[i])
             std_ba.append(std[i])
             
-    payload, axs = plt.subplots(2, 1, figsize = (16, 9))
+    mean_std_vs_payload, axs = plt.subplots(2, 1, figsize = (16, 9))
 
     # mean vs payload size
     axs[0].plot(SIZES, mean_ab, color = COLORS[0], linewidth = 3, marker = 's', markersize = 9, label = 'AB')
@@ -335,31 +337,29 @@ def payload_analysis(data):
     axs[1].grid(True)
 
     # global adjustments
-    # plt.suptitle('Impact of Payload Size on Latency Mean and Standard Deviation', fontsize = 32)
+    plt.suptitle('Impact of Payload Size on Latency Mean and Standard Deviation', fontsize = 32)
     plt.tight_layout()
     
-    return payload
+    return mean_std_vs_payload
 
 def main():
     # ping-pong analysis
     data = importData(DATA_PATHS[0])
     pingpong_analysis(data)
-    plt.show()
     
     # histograms
     for i in range(1, len(DATA_PATHS)):
         data = importData(DATA_PATHS[i])
-        histograms_plot(data, DATA_PATHS[i])
-        plt.show()
+        histograms_plot(data, DATA_PATHS[i], SCENARIOS[i - 1])
         
     # PDF analysis
     data = importData(DATA_PATHS[1])
     pdf_analysis(data)
-    plt.show()
     
     # payload
     data = importData(DATA_PATHS[1]) + importData(DATA_PATHS[3])
     payload_analysis(data)
+    
     plt.show()
 
 main()
