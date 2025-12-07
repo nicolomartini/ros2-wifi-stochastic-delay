@@ -70,7 +70,7 @@ source install/setup.bash
 ros2 run delay_est sender
 ros2 run delay_est receiver
 ```
-*Note: Ensure NTP synchronization is active between nodes before running measurements.*
+*Note: ensure NTP synchronization is active between nodes before running measurements.*
 
 ### 2. Statistical Analysis (Python)
 The `delay_anl` folder contains the experimental datasets compressed in `data.zip` and the analysis scripts. The Python environment is managed via Anaconda.
